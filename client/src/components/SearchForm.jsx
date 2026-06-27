@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function SearchForm({ onSearch }) {
+function SearchForm({ onSearch, loading }) {
   const [pnr, setPnr] = useState('')
 
   const handleSubmit = () => {
@@ -11,17 +11,30 @@ function SearchForm({ onSearch }) {
     }
   }
 
+  const handleKey = (e) => {
+    if (e.key === 'Enter') handleSubmit()
+  }
+
   return (
-    <div>
-      <h2>PNR Status Checker</h2>
-      <input
-        type="text"
-        placeholder="Enter 10-digit PNR"
-        value={pnr}
-        maxLength={10}
-        onChange={(e) => setPnr(e.target.value)}
-      />
-      <button onClick={handleSubmit}>Check Status</button>
+    <div className="search-box">
+      <div className="search-row">
+        <input
+          className="search-input"
+          type="text"
+          placeholder="Enter 10-digit PNR"
+          value={pnr}
+          maxLength={10}
+          onChange={(e) => setPnr(e.target.value.replace(/\D/g, ''))}
+          onKeyDown={handleKey}
+        />
+        <button
+          className="search-btn"
+          onClick={handleSubmit}
+          disabled={loading}
+        >
+          {loading ? 'Checking...' : 'Check Status'}
+        </button>
+      </div>
     </div>
   )
 }

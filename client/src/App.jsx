@@ -12,7 +12,6 @@ function App() {
     setLoading(true)
     setError(null)
     setData(null)
-
     try {
       const res = await axios.get(`http://localhost:3000/api/pnr/${pnr}`)
       if (res.data.success) {
@@ -20,7 +19,7 @@ function App() {
       } else {
         setError(res.data.message)
       }
-    } catch (err) {
+    } catch (_err) {
       setError('Something went wrong. Try again.')
     } finally {
       setLoading(false)
@@ -28,12 +27,23 @@ function App() {
   }
 
   return (
-    <div>
-      <SearchForm onSearch={handleSearch} />
+    <div className="app">
+      <div className="header">
+        <h1>🚆 PNR Status</h1>
+        <p>Indian Railways live ticket status</p>
+      </div>
 
-      {loading && <p>Fetching PNR status...</p>}
-      {error   && <p style={{ color: 'red' }}>{error}</p>}
-      {data    && <PNRResult data={data} />}
+      <SearchForm onSearch={handleSearch} loading={loading} />
+
+      {loading && (
+        <div className="loading">
+          <span>Fetching your ticket status...</span>
+        </div>
+      )}
+
+      {error && <div className="error-box">⚠ {error}</div>}
+
+      {data  && <PNRResult data={data} />}
     </div>
   )
 }

@@ -1,0 +1,312 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0B1120;
+  color: #F1F5F9;
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+.app {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* ── Header ── */
+.header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #F97316;
+  letter-spacing: -0.5px;
+}
+
+.header p {
+  color: #64748B;
+  font-size: 0.9rem;
+  margin-top: 0.4rem;
+}
+
+/* ── Search Box ── */
+.search-box {
+  background: #141E35;
+  border: 1px solid #1E2D4A;
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.search-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.search-input {
+  flex: 1;
+  background: #0B1120;
+  border: 1.5px solid #1E2D4A;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  color: #F1F5F9;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  border-color: #F97316;
+}
+
+.search-input::placeholder {
+  color: #334155;
+  letter-spacing: 0;
+}
+
+.search-btn {
+  background: #F97316;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.search-btn:hover  { background: #EA6C0A; }
+.search-btn:active { transform: scale(0.97); }
+
+/* ── States ── */
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: #64748B;
+  font-size: 0.95rem;
+}
+
+.loading span {
+  display: inline-block;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+.error-box {
+  background: #1E0A0A;
+  border: 1px solid #7F1D1D;
+  color: #FCA5A5;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  font-size: 0.9rem;
+}
+
+/* ── Ticket Card ── */
+.ticket {
+  background: #141E35;
+  border: 1px solid #1E2D4A;
+  border-radius: 16px;
+  overflow: hidden;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ticket-header {
+  background: #F97316;
+  padding: 1.25rem 1.5rem;
+}
+
+.train-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.train-number {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.75);
+  margin-top: 2px;
+}
+
+.ticket-body {
+  padding: 1.25rem 1.5rem;
+}
+
+.journey-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.station {
+  text-align: center;
+  flex: 1;
+}
+
+.station-code {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #F1F5F9;
+}
+
+.station-label {
+  font-size: 0.72rem;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+.journey-arrow {
+  color: #F97316;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.meta-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.meta-item {
+  background: #0B1120;
+  border-radius: 8px;
+  padding: 0.5rem 0.85rem;
+  flex: 1;
+  min-width: 120px;
+}
+
+.meta-label {
+  font-size: 0.7rem;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.meta-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #F1F5F9;
+  margin-top: 2px;
+}
+
+/* ── Perforation divider ── */
+.perforation {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 1.25rem 0;
+  position: relative;
+}
+
+.perf-circle {
+  width: 20px;
+  height: 20px;
+  background: #0B1120;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.perf-line {
+  flex: 1;
+  border-top: 2px dashed #1E2D4A;
+}
+
+/* ── Passengers ── */
+.passengers-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #64748B;
+  margin-bottom: 0.75rem;
+  padding: 0 1.5rem;
+}
+
+.passenger-list {
+  padding: 0 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.passenger-card {
+  background: #0B1120;
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pax-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pax-number {
+  font-size: 0.75rem;
+  color: #64748B;
+}
+
+.pax-seat {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #F1F5F9;
+}
+
+.pax-booking {
+  font-size: 0.75rem;
+  color: #64748B;
+}
+
+.status-badge {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+}
+
+.status-cnf {
+  background: #052E16;
+  color: #4ADE80;
+  border: 1px solid #166534;
+}
+
+.status-rac {
+  background: #1C1109;
+  color: #FCD34D;
+  border: 1px solid #92400E;
+}
+
+.status-wl {
+  background: #1E0A0A;
+  color: #FCA5A5;
+  border: 1px solid #7F1D1D;
+}
+
+.status-default {
+  background: #1E2D4A;
+  color: #94A3B8;
+  border: 1px solid #2D3F5E;
+}
