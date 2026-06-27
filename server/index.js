@@ -6,7 +6,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-const API_KEY = '5b27b297aamshfdbb598e6a3e5f4p16763ajsnf37d2ce2de09'
+const API_KEY = 'YOUR_API_KEY'
 
 app.get('/api/pnr/:number', async (req, res) => {
   const { number } = req.params
