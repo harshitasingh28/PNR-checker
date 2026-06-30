@@ -6,7 +6,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-const API_KEY = 'YOUR_API_KEY'
+const API_KEY = process.env.RAPIDAPI_KEY  // ← must be exactly this
 
 app.get('/api/pnr/:number', async (req, res) => {
   const { number } = req.params
