@@ -13,7 +13,7 @@ function App() {
     setError(null)
     setData(null)
     try {
-      const res = await axios.get(`http://localhost:3000/api/pnr/${pnr}`)
+      const res = await axios.get(`https://pnr-checker-server.onrender.com/api/pnr/${pnr}`)
       if (res.data.success) {
         setData(res.data.data)
       } else {
